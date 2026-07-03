@@ -41,5 +41,52 @@ Bootdisk will use a monorepo.
 
 The main repository will be:
 
-```text
-bootdiskhq/bootdisk
+    bootdiskhq/bootdisk
+
+The repository may eventually contain folders such as:
+
+    docs/
+    apps/
+    packages/
+    tools/
+    infrastructure/
+
+These folders should be added when there is a real need for them, not before.
+
+## Alternatives Considered
+
+### Multiple repositories
+
+Example:
+
+    bootdisk-web
+    bootdisk-api
+    bootdisk-docs
+    bootdisk-tools
+
+This was rejected for now because it adds coordination overhead before the project needs it.
+
+### Documentation-only repository first
+
+This was considered, but rejected because the main repository should become the long-term home of both documentation and implementation.
+
+## Consequences
+
+### Positive
+
+- One place for project history
+- One issue tracker
+- One roadmap
+- Easier onboarding
+- Easier to keep documentation and implementation aligned
+- Lower operational complexity in the early phase
+
+### Negative
+
+- The repository may become large over time
+- Some tools may eventually need clearer boundaries
+- We may need stronger conventions as the project grows
+
+## Review Date
+
+2027-07-03
