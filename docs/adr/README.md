@@ -28,6 +28,7 @@ The ownership rule is defined by
 | [0005](0005-Source-adapters-isolate-source-specific-parsing-from-the-preservation-core.md) | Source adapters isolate source-specific parsing | Project ingest boundary |
 | [0006](0006-adr-ownership-across-repositories.md) | ADR ownership follows architectural scope | Project governance |
 | [0007](0007-multi-repository-component-boundaries.md) | Use component repositories with explicit architectural boundaries | Project / repository structure |
+| [0008](0008-catalog-interprets-preserved-observations.md) | Catalog interprets preserved observations without replacing them | Project catalog boundary |
 
 ## Component ADR registry
 
