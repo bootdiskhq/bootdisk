@@ -37,11 +37,14 @@ bootdiskhq/bootdisk
 bootdiskhq/bootdisk-ingest
     source observation, preservation identities, adapters and extraction
 
+bootdiskhq/bootdisk-catalog
+    JSON-first catalog identity, interpretation and relationships
+
 bootdiskhq/bootdisk-publish
     manifest-driven publication, stable objects and derivatives
 ```
 
-The ingest manifest is the semantic boundary between source understanding and publication. `bootdisk-publish` consumes manifest observations and verified preservation extraction bytes; it does not rediscover source-specific formats from original media.
+The ingest manifest is the semantic boundary between source understanding and downstream components. `bootdisk-catalog` interprets preserved observations through stable catalog IDs, while `bootdisk-publish` consumes manifest observations and verified preservation extraction bytes without rediscovering source-specific formats from original media.
 
 See [docs/architecture.md](docs/architecture.md) for the project architecture.
 
@@ -52,12 +55,13 @@ The project has moved beyond the original documentation-only foundation:
 - `bootdisk-ingest` has a tested K-CD ingest pipeline;
 - K-CD metadata can be observed through both K.DTX and Director-based paths;
 - preservation extraction materializes explicit verified manifest references;
+- `bootdisk-catalog` has a JSON-first ID-addressed reference graph implementation;
 - `bootdisk-publish` consumes ingest manifests without source-specific parsing;
 - original publication objects are stored content-addressably;
 - WebP thumbnails can be generated as traceable publication derivatives;
 - the end-to-end path from real K-CD media through ingest and publication has been demonstrated.
 
-Catalog resolution, broad source coverage and the public archive experience remain active future work.
+Catalog enrichment, broad source coverage and the public archive experience remain active future work.
 
 ## Project documentation
 
@@ -76,6 +80,10 @@ This repository is the coordination layer for the overall project. It owns proje
 ### `bootdisk-ingest`
 
 Ingest understands historical sources. It inventories bytes, calculates identities, records source observations, isolates source-specific interpretation in adapters, and may create verified preservation extractions for explicit manifest references.
+
+### `bootdisk-catalog`
+
+Catalog interprets preserved evidence without replacing it. It owns software and release identity, artifact-to-release identification, occurrence relationships and stable catalog IDs. Authoritative catalog data is JSON-first; indexes and projections are derived.
 
 ### `bootdisk-publish`
 
