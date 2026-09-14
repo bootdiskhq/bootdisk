@@ -132,6 +132,14 @@ The goal of this phase is to answer the question that preservation intentionally
 - provenance-aware matching tools
 - ADRs for catalog-specific decisions
 
+### Deferred package and installer modeling
+
+Bootdisk may later model complete software packages or distributions rather than treating an explicitly referenced installer as the whole program. This matters for sources where multiple programs legitimately use the same generic `Setup.exe` while their actual program payload is stored in neighboring `.bin`, data or other files.
+
+This is deliberately deferred. Shared installer Artifacts are not currently a problem: Artifact identity describes exact bytes, while Occurrences preserve where those bytes were observed. Bootdisk must not infer that two programs are identical merely because they use the same installer Artifact.
+
+A future package/distribution model may support grouping or packaging the complete set of files needed to preserve or reproduce a software distribution. That work should be driven by real source material and presentation or preservation requirements rather than added to the current catalog path prematurely.
+
 ---
 
 ## Phase 4: Public archive experience
