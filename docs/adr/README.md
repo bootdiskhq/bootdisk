@@ -22,11 +22,12 @@ The ownership rule is defined by
 | ADR | Decision | Scope |
 | --- | --- | --- |
 | [0001](0001-documentation-first.md) | Documentation first | Project |
-| [0002](0002-monorepo.md) | Monorepo | Project / repository structure |
+| [0002](0002-monorepo.md) | Monorepo — superseded by ADR-0007 | Historical repository structure |
 | [0003](0003-github-as-source-of-truth.md) | GitHub as source of truth | Project |
 | [0004](0004-separate-preservation.md) | Separate preservation, provenance and catalog domains | Project domain model |
 | [0005](0005-Source-adapters-isolate-source-specific-parsing-from-the-preservation-core.md) | Source adapters isolate source-specific parsing | Project ingest boundary |
 | [0006](0006-adr-ownership-across-repositories.md) | ADR ownership follows architectural scope | Project governance |
+| [0007](0007-multi-repository-component-boundaries.md) | Use component repositories with explicit architectural boundaries | Project / repository structure |
 
 ## Component ADR registry
 

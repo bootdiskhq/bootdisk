@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted
+Superseded by [ADR-0007: Use component repositories with explicit architectural boundaries](0007-multi-repository-component-boundaries.md) on 2026-09-14.
 
 ## Date
 
@@ -90,3 +90,7 @@ This was considered, but rejected because the main repository should become the 
 ## Review Date
 
 2027-07-03
+
+## Historical note
+
+This decision accurately records the project's initial repository strategy. It remains here as architectural history rather than being rewritten after the fact. By September 2026, independent ingest and publication components had established durable contracts and lifecycles, so ADR-0007 superseded the monorepo decision.
