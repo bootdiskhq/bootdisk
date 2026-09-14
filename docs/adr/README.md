@@ -29,6 +29,7 @@ The ownership rule is defined by
 | [0006](0006-adr-ownership-across-repositories.md) | ADR ownership follows architectural scope | Project governance |
 | [0007](0007-multi-repository-component-boundaries.md) | Use component repositories with explicit architectural boundaries | Project / repository structure |
 | [0008](0008-catalog-interprets-preserved-observations.md) | Catalog interprets preserved observations without replacing them | Project catalog boundary |
+| [0009](0009-json-first-catalog-storage.md) | Use JSON as the authoritative catalog storage format | Project catalog persistence |
 
 ## Component ADR registry
 
