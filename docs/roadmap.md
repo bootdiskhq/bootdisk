@@ -6,13 +6,26 @@ This roadmap describes the current direction of the project. It is not a fixed p
 
 ## Verified status — 16 October 2026
 
-Public release **1.2.0-rc18** contains **603 source posts across nine K-CDs**.
-K-CD 16/2001 added 99 posts and K-CD 3/2002 added 78, including main menus,
-Tools.dtx and the 16/2001 J.DTX calendar. The latest two CDs contributed 120
-original Norwegian RTF documents. Existing posts and human review decisions were
-preserved. All 599 uploaded new/changed files were verified against the release.
-See [rc18 validation](https://github.com/bootdiskhq/bootdisk-web/blob/main/docs/1.2.0-rc18-validation.md)
-and [release PR 67](https://github.com/bootdiskhq/bootdisk-web/pull/67).
+Public release **1.2.0-rc19** contains **730 source posts across eleven K-CDs**.
+K-CD 11/2001 added 64 observed main/workshop posts and K-CD 12/2001 added 63.
+The two main menus contributed 61 original Norwegian RTF documents; available
+menu artwork is included. All 603 rc18 entry documents and human review decisions
+are preserved. Release evidence is in
+[rc19 validation](https://github.com/bootdiskhq/bootdisk-web/blob/main/docs/1.2.0-rc19-validation.md)
+and [release PR 68](https://github.com/bootdiskhq/bootdisk-web/pull/68).
+
+**Coverage exceptions remain explicit:** Tools/Knuser.dtx on 12/2001 contains
+36 alternate metadata rows not yet qualified against actual menu behavior.
+They are preserved but not published or declared redundant. Both new CDs have a
+K9 row without a content folder and three missing workshop launch references.
+These source rows remain visible; no replacement files or identity claims are
+invented. Supplemental workshop RTF coverage is not certified.
+
+Intake attempts on 4/2002, 8/2002 and 16/2002 exposed unindented multiline text.
+[Ingest draft PR 24](https://github.com/bootdiskhq/bootdisk-ingest/pull/24) contains
+partial nested-menu support, but fails real-media acceptance and is not merged
+or used for rc19. This is a format-level follow-up, not manual curation of each
+program. Original source text must not be silently repaired.
 
 Automatic source documentation is delivered. It does **not** establish executable
 compatibility, exact product identity or complete coverage of every possible menu.
@@ -266,7 +279,13 @@ The roadmap follows these principles:
 
 ## Current focus
 
-1. **Repeatable intake at scale.** Consolidate the existing scripts into a resumable
+1. **Qualify observed format exceptions, then consolidate intake.** Resolve the
+   2002 multiline text with preserved raw evidence and matching Catalog validation;
+   verify nested Tools paths and all original regression media. Determine the role
+   of Knuser.dtx before claiming complete coverage of 12/2001. Do not turn these
+   format investigations into per-program manual approvals.
+
+   **Repeatable intake at scale.** Consolidate the existing scripts into a resumable
    operator command with per-CD progress and a final coverage/exception report.
    Done when an interrupted run can resume without duplicate posts or changed human
    decisions, with main menus, supplemental menus, images and RTFs accounted for.
