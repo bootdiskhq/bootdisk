@@ -64,7 +64,7 @@ The project has moved beyond the original documentation-only foundation:
 - WebP thumbnails can be generated as traceable publication derivatives;
 - the end-to-end path from real K-CD media through ingest and publication has been demonstrated.
 
-The public archive is live: release 1.2.0-rc18 has 603 source posts across nine CDs. Automatic source documentation, original RTF reading and public update history are delivered. Product enrichment and broader source coverage continue. See the [current roadmap](docs/roadmap.md) for verified status and priorities.
+The public archive is live: release 1.2.0-rc19 has 730 source posts across eleven CDs. Automatic source documentation, original RTF reading and public update history are delivered. Product enrichment and broader source coverage continue. See the [current roadmap](docs/roadmap.md) for verified status and priorities.
 
 ## Project documentation
 
