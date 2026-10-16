@@ -4,6 +4,29 @@ Bootdisk is a long-term project to preserve, document and make historical softwa
 
 This roadmap describes the current direction of the project. It is not a fixed promise; phases may overlap and priorities may change as source material and architectural needs become clearer.
 
+## Verified status — 16 October 2026
+
+Public release **1.2.0-rc18** contains **603 source posts across nine K-CDs**.
+K-CD 16/2001 added 99 posts and K-CD 3/2002 added 78, including main menus,
+Tools.dtx and the 16/2001 J.DTX calendar. The latest two CDs contributed 120
+original Norwegian RTF documents. Existing posts and human review decisions were
+preserved. All 599 uploaded new/changed files were verified against the release.
+See [rc18 validation](https://github.com/bootdiskhq/bootdisk-web/blob/main/docs/1.2.0-rc18-validation.md)
+and [release PR 67](https://github.com/bootdiskhq/bootdisk-web/pull/67).
+
+Automatic source documentation is delivered. It does **not** establish executable
+compatibility, exact product identity or complete coverage of every possible menu.
+The latest intake produced no new machine investigation tasks. Product enrichment
+remains optional; missing versions do not create mandatory manual review queues.
+
+The scripts do most extraction, validation, projection and packaging. Selecting
+inputs, coordinating commands, investigating exceptions and FileZilla publication
+still require an operator. A fully unattended intake/deploy service is not delivered.
+
+This status and the current focus below supersede older planning labels. Detailed
+component plans and release reports remain supporting records, not independent
+project-wide priority lists.
+
 ## Roadmap status
 
 | Phase | Status | Focus |
@@ -11,8 +34,8 @@ This roadmap describes the current direction of the project. It is not a fixed p
 | Phase 0 | Completed / maintained | Foundation, governance and architectural boundaries |
 | Phase 1 | In progress | Preservation ingest and source qualification |
 | Phase 2 | In progress | Manifest-driven publication pipeline |
-| Phase 3 | Planned | Catalog model and identity resolution |
-| Phase 4 | Planned | Public archive experience |
+| Phase 3 | Core delivered / enrichment ongoing | Catalog model and identity resolution |
+| Phase 4 | Published / evolving | Public archive experience |
 | Phase 5 | Planned | Additional sources and preservation workflows |
 | Phase 6 | Future | LetoLAN and broader Norwegian PC-history collections |
 | Phase 7 | Future | Contributor, OCR and large-scale enrichment workflows |
@@ -52,7 +75,7 @@ The goal of this phase is to observe historical sources reproducibly without mak
 - SHA-256 identities
 - logical collection identity
 - media-image observations and ISO9660 metadata
-- K-CD adapter with K.DTX parsing
+- K-CD adapter with K.DTX, Tools.dtx and J.DTX calendar parsing
 - reusable Director format reader
 - K-CD Director adapter when K.DTX is absent
 - explicit validation and unresolved/conflicting observations
@@ -65,8 +88,8 @@ The goal of this phase is to observe historical sources reproducibly without mak
 
 ### Next goals
 
-- stabilize the current release candidate
-- continue qualifying older Director-based K-CD variants
+- qualify additional available K-CDs using the current repeatable pipeline
+- investigate additional menu variants only when a concrete source requires it
 - document manifest evolution rules
 - add new source adapters only when actual source material establishes their requirements
 - keep preservation core behavior independent of publication-specific formats
@@ -102,7 +125,7 @@ The goal of this phase is to turn preserved observations into publication-ready 
 
 ## Phase 3: Catalog model and identity resolution
 
-**Status:** Planned
+**Status:** Core delivered; optional identity enrichment continues
 
 The goal of this phase is to answer the question that preservation intentionally does not answer automatically: **what is this?**
 
@@ -124,7 +147,7 @@ The goal of this phase is to answer the question that preservation intentionally
 - recognize byte-identical Artifacts across different Sources
 - avoid making filename, magazine issue or editorial title part of Artifact identity
 
-### Possible deliverables
+### Delivered foundations, maintained as the model evolves
 
 - catalog schema
 - curation workflow
@@ -136,13 +159,19 @@ The goal of this phase is to answer the question that preservation intentionally
 
 ## Phase 4: Public archive experience
 
-**Status:** Planned
+**Status:** Published; further content access planned
 
 The goal of this phase is to expose useful archive material through `bootdisk.no` while preserving the distinction between evidence, catalog interpretation and publication policy.
 
-### Goals
+### Delivered public capabilities
 
-- project landing page
+- collection and CD pages, source-post browsing, search and filters
+- original menu descriptions, images and linked RTF text/downloads
+- public added/changed history and source-status explanations
+
+### Continuing goals
+
+- maintain the project landing page
 - browse preserved/cataloged material
 - basic search and filtering
 - source and occurrence pages
@@ -237,10 +266,71 @@ The roadmap follows these principles:
 
 ## Current focus
 
-The current focus is:
+1. **Repeatable intake at scale.** Consolidate the existing scripts into a resumable
+   operator command with per-CD progress and a final coverage/exception report.
+   Done when an interrupted run can resume without duplicate posts or changed human
+   decisions, with main menus, supplemental menus, images and RTFs accounted for.
+2. **Keep documentation aligned with each release.** Update this roadmap and link
+   component ADRs when behavior changes; retain release evidence and distinguish
+   source documentation from optional product identification.
+3. **Courses and original attachments.** Pilot one source-bound PDF course with
+   file type, size, provenance and an explicit publication decision. Define the
+   attachment contract before general rollout. The Videoskolen PDF on 3/2002 is a
+   candidate; rc18 publishes its description/RTF, not the PDF itself.
 
-1. finish documentation and contract cleanup around the existing ingest/publish architecture;
-2. stabilize preservation ingest and publication boundaries;
-3. continue real-media qualification;
-4. define the catalog layer that can build on preserved Artifacts and Occurrences;
-5. prepare the first public archive experience on top of those stable contracts.
+## Planned milestones beyond the current intake work
+
+### CD covers
+
+Use available scanned PDF covers first. Verify issue/year visually, show a cover
+on the CD page and retain the original scan. Record missing scans for a separate
+completion milestone; a complete scan collection is not a prerequisite.
+
+### RTF coverage and wording
+
+RTF publication is delivered, but exhaustive coverage across all source formats
+and clearer wording remain work to qualify. Distinguish linked/readable, identical
+to menu text, unreadable, investigated without a match, and not yet investigated.
+Never equate an absent reading panel with proof that no RTF exists on the CD.
+
+### Video courses
+
+Wait for a disc containing actual video lessons. Preserve original media and
+source bindings independently of any YouTube copy. Before a pilot, resolve rights,
+channel and visibility; define lesson ordering and a click-to-load embedded player.
+A PDF about video editing does not qualify as a video lesson. No upload is authorized
+by this roadmap entry alone.
+
+### Try historical software in the browser
+
+**Status: future exploratory pilot, requested 16 October 2026. No implementation
+or emulator choice has been approved. No delivery date or mandatory place ahead
+of intake, courses or covers is assigned.**
+
+Goal: a source post can eventually offer “Prøv i nettleseren”, opening a disposable
+emulated session while preserving the original artifact unchanged.
+
+Start with one small, well-understood program. Select the candidate and verify
+current emulator capabilities at that time; do not assume the Windows programs on
+our CDs work in a browser. Record an ADR before implementation covering:
+
+- emulator/runtime choice and hosting ownership across Catalog, Publish and Web;
+- permitted redistribution of the program, OS/runtime images and dependencies;
+- an isolated temporary session, no guest network or host-file access by default;
+- immutable source objects and separate disposable session writes;
+- a launch profile bound to exact source hashes, with OS, dependencies and settings;
+- compatibility evidence, supported devices, startup/download budgets and clear
+  failure states; known 3D/driver limitations must remain visible;
+- disabling the feature independently of the public catalog and source preservation.
+
+Pilot acceptance: one permitted program starts and responds on explicitly tested
+browsers/devices; reset restores a clean session; isolation and source integrity
+are verified; failures leave the catalog usable; a reproducible launch recipe and
+limitations are documented. Expand only after the pilot is evaluated. A launch
+profile must not turn an unverified catalog identity into a confirmed one.
+
+### Deferred exploration
+
+Do not spend broadly on AI enrichment or old menu formats without a concrete
+need. Investigate actual intake exceptions and preserve unknowns. Broader sources,
+LetoLAN and contributor workflows remain in phases 5–7 above.

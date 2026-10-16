@@ -42,6 +42,9 @@ bootdiskhq/bootdisk-catalog
 
 bootdiskhq/bootdisk-publish
     manifest-driven publication, stable objects and derivatives
+
+bootdiskhq/bootdisk-web
+    regenerable public presentation and local curator interface
 ```
 
 The ingest manifest is the semantic boundary between source understanding and downstream components. `bootdisk-catalog` interprets preserved observations through stable catalog IDs, while `bootdisk-publish` consumes manifest observations and verified preservation extraction bytes without rediscovering source-specific formats from original media.
@@ -61,7 +64,7 @@ The project has moved beyond the original documentation-only foundation:
 - WebP thumbnails can be generated as traceable publication derivatives;
 - the end-to-end path from real K-CD media through ingest and publication has been demonstrated.
 
-Catalog enrichment, broad source coverage and the public archive experience remain active future work.
+The public archive is live: release 1.2.0-rc18 has 603 source posts across nine CDs. Automatic source documentation, original RTF reading and public update history are delivered. Product enrichment and broader source coverage continue. See the [current roadmap](docs/roadmap.md) for verified status and priorities.
 
 ## Project documentation
 
