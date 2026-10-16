@@ -47,3 +47,29 @@ ADR-0008 currently records a cross-repository contract discovered during ingest
 work. Its accepted record remains valid. Under ADR-0006, future changes to that
 cross-repository contract should be captured by a project-level ADR here, with
 component documentation linking to it.
+
+## Catalog ADR registry (reviewed 16 October 2026)
+
+- [ADR 001: Curated descriptions are catalog knowledge](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-001-curated-descriptions.md)
+- [ADR 002: Public metadata is versioned in Git](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-002-public-metadata-in-git.md)
+- [ADR-003: Identify source-entry packages separately from files](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-003-source-entry-packages.md)
+- [ADR-004: Local curator with a Catalog-owned write boundary](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-004-local-curator-boundary.md)
+- [ADR-005: Drafts, explicit decisions and append-only review history](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-005-review-state-and-decisions.md)
+- [ADR-006: gate hosted curation on approved-user access](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-006-hosted-curator-access.md)
+- [ADR-007: Receive unidentified Director candidates outside the review workspace](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-007-candidate-intake.md)
+- [ADR-008: Keep first-pass suggestions outside authoritative decisions](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-008-automatic-first-pass.md)
+- [ADR-009: Automatic source-attributed identification](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-009-machine-source-identification.md)
+- [ADR-010: Machine decisions backed by decoded program metadata](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-010-machine-payload-identification.md)
+- [ADR 011: Katalogfør kilden uavhengig av programidentitet](https://github.com/bootdiskhq/bootdisk-catalog/blob/main/docs/adr-011-source-catalog-readiness.md)
+
+These are existing component-owned records; this index does not change their
+status or transfer ownership. In particular, ADR 011 separates source catalog
+readiness from optional product identification. Its initial acceptance figures
+are historical; current release counts belong in the roadmap and release reports.
+
+## Decisions still to make
+
+Browser execution is a roadmap proposal, not an accepted architecture decision.
+Create a project-level ADR before implementation because runtime isolation,
+launch-profile provenance and public hosting cross component boundaries. Likewise,
+the generic course/attachment contract needs an explicit decision before rollout.
