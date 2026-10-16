@@ -6,17 +6,20 @@ This roadmap describes the current direction of the project. It is not a fixed p
 
 ## Verified status — 16 October 2026
 
-Public release **1.2.0-rc19** contains **730 source posts across eleven K-CDs**.
-K-CD 11/2001 added 64 observed main/workshop posts and K-CD 12/2001 added 63.
-The two main menus contributed 61 original Norwegian RTF documents; available
-menu artwork is included. All 603 rc18 entry documents and human review decisions
+Public release **1.2.0-rc20** contains **857 source posts across thirteen K-CDs**.
+K-CD 9/2001 adds 64 observed main/workshop posts and K-CD 10/2001 adds 63.
+The two main menus contribute 62 original Norwegian RTF documents; available
+menu artwork is included. All 730 rc19 entry documents and human review decisions
 are preserved. Release evidence is in
-[rc19 validation](https://github.com/bootdiskhq/bootdisk-web/blob/main/docs/1.2.0-rc19-validation.md)
-and [release PR 68](https://github.com/bootdiskhq/bootdisk-web/pull/68).
+[rc20 validation](https://github.com/bootdiskhq/bootdisk-web/blob/main/docs/1.2.0-rc20-validation.md)
+and [release PR 69](https://github.com/bootdiskhq/bootdisk-web/pull/69).
+FreshIcons on 9/2001 has no discovered main-menu artwork/RTF; AdAware has a missing
+workshop launch reference, preserved as a visible issue. Neither selected CD has
+unprocessed DTX metadata, but workshop RTF completeness is not certified.
 
 **Coverage exceptions remain explicit:** Tools/Knuser.dtx on 12/2001 contains
 36 alternate metadata rows not yet qualified against actual menu behavior.
-They are preserved but not published or declared redundant. Both new CDs have a
+They are preserved but not published or declared redundant. Both 11/2001 and 12/2001 have a
 K9 row without a content folder and three missing workshop launch references.
 These source rows remain visible; no replacement files or identity claims are
 invented. Supplemental workshop RTF coverage is not certified.
@@ -24,8 +27,14 @@ invented. Supplemental workshop RTF coverage is not certified.
 Intake attempts on 4/2002, 8/2002 and 16/2002 exposed unindented multiline text.
 [Ingest draft PR 24](https://github.com/bootdiskhq/bootdisk-ingest/pull/24) contains
 partial nested-menu support, but fails real-media acceptance and is not merged
-or used for rc19. This is a format-level follow-up, not manual curation of each
+or used for rc19/rc20. This is a format-level follow-up, not manual curation of each
 program. Original source text must not be silently repaired.
+
+13/2001 and 14/2001 were attempted but not published. The former has an unresolved
+Firewall workshop destination, unprocessed Quiz/Knuser metadata and a missing
+Championship installer. The latter has inconsistent external-cast DRCF/MCsL bounds
+and unprocessed Knuser metadata. Preserve these observations and qualify the
+formats before adding either CD; do not weaken validation to force publication.
 
 Automatic source documentation is delivered. It does **not** establish executable
 compatibility, exact product identity or complete coverage of every possible menu.
@@ -283,7 +292,8 @@ The roadmap follows these principles:
    2002 multiline text with preserved raw evidence and matching Catalog validation;
    verify nested Tools paths and all original regression media. Determine the role
    of Knuser.dtx before claiming complete coverage of 12/2001. Do not turn these
-   format investigations into per-program manual approvals.
+   format investigations into per-program manual approvals. Also qualify the new
+   13/2001 workshop destination and 14/2001 external-cast boundary variants.
 
    **Repeatable intake at scale.** Consolidate the existing scripts into a resumable
    operator command with per-CD progress and a final coverage/exception report.
