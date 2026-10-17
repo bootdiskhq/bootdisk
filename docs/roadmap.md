@@ -4,18 +4,19 @@ Bootdisk is a long-term project to preserve, document and make historical softwa
 
 This roadmap describes the current direction of the project. It is not a fixed promise; phases may overlap and priorities may change as source material and architectural needs become clearer.
 
-## Verified status — 16 October 2026
+## Verified status — 17 October 2026
 
-Public release **1.2.0-rc20** contains **857 source posts across thirteen K-CDs**.
-K-CD 9/2001 adds 64 observed main/workshop posts and K-CD 10/2001 adds 63.
-The two main menus contribute 62 original Norwegian RTF documents; available
-menu artwork is included. All 730 rc19 entry documents and human review decisions
-are preserved. Release evidence is in
-[rc20 validation](https://github.com/bootdiskhq/bootdisk-web/blob/main/docs/1.2.0-rc20-validation.md)
-and [release PR 69](https://github.com/bootdiskhq/bootdisk-web/pull/69).
-FreshIcons on 9/2001 has no discovered main-menu artwork/RTF; AdAware has a missing
-workshop launch reference, preserved as a visible issue. Neither selected CD has
-unprocessed DTX metadata, but workshop RTF completeness is not certified.
+Public release **1.2.0-rc21** contains **919 source posts across fourteen K-CDs**.
+K-CD 7/2001 adds 29 main-menu and 33 workshop posts, plus 29 original RTF documents.
+All 857 rc20 entry documents and human review decisions are preserved. The new CD
+has no missing explicit launch references or unprocessed DTX metadata; workshop
+RTF completeness and executable compatibility remain unverified. Release evidence:
+[rc21 validation](https://github.com/bootdiskhq/bootdisk-web/blob/main/docs/1.2.0-rc21-validation.md).
+
+[Web PR 70](https://github.com/bootdiskhq/bootdisk-web/pull/70) makes all readable
+original RTF text expandable, including text identical to the menu description.
+Original downloads remain separate. Unreadable files get an explanation, not a
+fabricated transcription. Freesaver's Symbol-font text is an Ingest follow-up.
 
 **Coverage exceptions remain explicit:** Tools/Knuser.dtx on 12/2001 contains
 36 alternate metadata rows not yet qualified against actual menu behavior.
@@ -35,6 +36,11 @@ Firewall workshop destination, unprocessed Quiz/Knuser metadata and a missing
 Championship installer. The latter has inconsistent external-cast DRCF/MCsL bounds
 and unprocessed Knuser metadata. Preserve these observations and qualify the
 formats before adding either CD; do not weaken validation to force publication.
+
+[Further source inspection](director-source-exceptions-2026-10-17.md) identifies
+two FireWall labels on 13/2001. On 14/2001, 95 active score references require 46
+cast members absent from the supplied Norwegian cast, which is byte-identical
+to 13/2001. Both remain unpublished; this is not repaired with another CD's files.
 
 Automatic source documentation is delivered. It does **not** establish executable
 compatibility, exact product identity or complete coverage of every possible menu.
