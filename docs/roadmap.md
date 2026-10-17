@@ -47,9 +47,12 @@ compatibility, exact product identity or complete coverage of every possible men
 The latest intake produced no new machine investigation tasks. Product enrichment
 remains optional; missing versions do not create mandatory manual review queues.
 
-The scripts do most extraction, validation, projection and packaging. Selecting
-inputs, coordinating commands, investigating exceptions and FileZilla publication
-still require an operator. A fully unattended intake/deploy service is not delivered.
+The [resumable intake command](intake.md) now coordinates extraction, projection
+and local packaging, reuses verified checkpoints and reports per-CD exceptions.
+Selecting qualified inputs, resolving format exceptions and publication still require
+an operator. A fully unattended intake/deploy service is not delivered.
+Next: qualify remaining metadata formats, extend workshop document coverage, and
+exercise larger batches before expanding the accepted profile set.
 
 This status and the current focus below supersede older planning labels. Detailed
 component plans and release reports remain supporting records, not independent
@@ -301,10 +304,11 @@ The roadmap follows these principles:
    format investigations into per-program manual approvals. Also qualify the new
    13/2001 workshop destination and 14/2001 external-cast boundary variants.
 
-   **Repeatable intake at scale.** Consolidate the existing scripts into a resumable
-   operator command with per-CD progress and a final coverage/exception report.
-   Done when an interrupted run can resume without duplicate posts or changed human
-   decisions, with main menus, supplemental menus, images and RTFs accounted for.
+   **Repeatable intake: first coordinator delivered.** The [command](intake.md)
+   resumes verified checkpoints and reports each CD separately. Real-media tests
+   cover main/workshop menus, images, RTFs, interrupted runs and blocked batches.
+   Expand qualification to larger batches and the unresolved source variants;
+   this does not certify complete-disc or workshop-RTF coverage.
 2. **Keep documentation aligned with each release.** Update this roadmap and link
    component ADRs when behavior changes; retain release evidence and distinguish
    source documentation from optional product identification.
