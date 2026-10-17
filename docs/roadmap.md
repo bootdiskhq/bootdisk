@@ -307,12 +307,13 @@ source exception before claiming complete new-source coverage.
 
 ## Current focus
 
-1. **Qualify observed format exceptions, then consolidate intake.** Resolve the
-   2002 multiline text with preserved raw evidence and matching Catalog validation;
-   verify nested Tools paths and all original regression media. Determine the role
-   of Knuser.dtx before claiming complete coverage of 12/2001. Do not turn these
-   format investigations into per-program manual approvals. Also qualify the new
-   13/2001 workshop destination and 14/2001 external-cast boundary variants.
+1. **Qualify the remaining source and artwork variants.** The observed 2002
+   multiline Tools prose and nested Tools paths now pass qualification. Resolve
+   4/2002's Flytter section and unsupported Director resource codec; qualify localized
+   screenshot names such as ShotNO.png. Determine the role of Knuser.dtx before
+   claiming complete coverage of 12/2001, and qualify 13/2001's workshop destination
+   and 14/2001's external-cast boundary. Keep these as format investigations rather
+   than per-program manual approvals.
 
    **Repeatable intake: first coordinator delivered.** The [command](intake.md)
    resumes verified checkpoints and reports each CD separately. Real-media tests
