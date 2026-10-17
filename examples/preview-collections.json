@@ -1,0 +1,14 @@
+{
+  "schema": "bootdisk-web-collections-1",
+  "collections": [
+    {
+      "id": "komputer-for-alle",
+      "title": "Komputer for alle — lokal innlesingsprøve",
+      "summary": "Utvalgte CD-er til lokal kontroll.",
+      "lede": "Dette er en forhåndsvisning av en innlesing, ikke en publisert release.",
+      "publication_values": ["KOMPUTER FOR ALLE", "Komputer for alle"],
+      "history": [],
+      "sources": []
+    }
+  ]
+}

@@ -64,7 +64,13 @@ The project has moved beyond the original documentation-only foundation:
 - WebP thumbnails can be generated as traceable publication derivatives;
 - the end-to-end path from real K-CD media through ingest and publication has been demonstrated.
 
-The public archive is live: release 1.2.0-rc19 has 730 source posts across eleven CDs. Automatic source documentation, original RTF reading and public update history are delivered. Product enrichment and broader source coverage continue. See the [current roadmap](docs/roadmap.md) for verified status and priorities.
+The public archive is live: release 1.2.0-rc21 has 919 source posts across fourteen CDs. Automatic source documentation, original RTF reading and public update history are delivered. Product enrichment and broader source coverage continue. See the [current roadmap](docs/roadmap.md) for verified status and priorities.
+
+## Local intake
+
+The [resumable intake command](docs/intake.md) coordinates qualified component CLIs,
+preserves previous entries and collects per-CD exceptions in an isolated workspace.
+It prepares a local preview; release approval and deployment remain separate.
 
 ## Project documentation
 

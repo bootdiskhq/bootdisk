@@ -30,6 +30,7 @@ The ownership rule is defined by
 | [0007](0007-multi-repository-component-boundaries.md) | Use component repositories with explicit architectural boundaries | Project / repository structure |
 | [0008](0008-catalog-interprets-preserved-observations.md) | Catalog interprets preserved observations without replacing them | Project catalog boundary |
 | [0009](0009-json-first-catalog-storage.md) | Use JSON as the authoritative catalog storage format | Project catalog persistence |
+| [0010](0010-resumable-intake-coordination.md) | Resumable local intake checkpoints | Cross-repository orchestration |
 
 ## Component ADR registry
 

@@ -1,0 +1,18 @@
+{
+  "schema": "bootdisk-intake-run-1",
+  "repositories": {
+    "ingest": "../../bootdisk-ingest",
+    "catalog": "../../bootdisk-catalog",
+    "publish": "../../bootdisk-publish",
+    "web": "../../bootdisk-web"
+  },
+  "media": [
+    {
+      "id": "kcd-7-2001",
+      "label": "K-CD 7/2001",
+      "profile": "dtx-workshop",
+      "source_root": "/Volumes/K-CD 7-2001"
+    }
+  ],
+  "collections": "preview-collections.json"
+}
