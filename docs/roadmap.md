@@ -295,6 +295,16 @@ The roadmap follows these principles:
 
 ---
 
+## Latest format qualification — 17 October 2026
+
+The [ten-CD follow-up](batch-formats-2026-10-17.md) prepares nine additional CDs
+locally: 427 source posts and 370 RTFs. All 73 missing Norwegian title tasks are
+resolved automatically; nested Tools menus and multiline prose are supported.
+Twenty-eight lesson documents are preserved separately, not published as courses.
+4/2002 remains blocked on the unqualified Flytter section and Director codec.
+These results are not deployed. Qualify localized screenshots and the remaining
+source exception before claiming complete new-source coverage.
+
 ## Current focus
 
 1. **Qualify observed format exceptions, then consolidate intake.** Resolve the

@@ -252,7 +252,7 @@ class Pipeline:
         require(not coverage.get('unprocessed_metadata') and
                 not any(x.get('unprojected_sections') for x in coverage.get('metadata_files', [])),
                 'Unprocessed source metadata; see observed manifest coverage')
-        tools_observed = any(x.get('path', '').casefold() == 'tools.dtx' for x in coverage.get('metadata_files', []))
+        tools_observed = any(x.get('path', '').casefold() in ('tools.dtx', 'tools/tools.dtx') for x in coverage.get('metadata_files', []))
         require(not (m['profile'] == 'dtx-workshop' and tools_observed),
                 'Root Tools.dtx already observed: workshop profile could duplicate entries')
         if m['profile'] == 'dtx':
