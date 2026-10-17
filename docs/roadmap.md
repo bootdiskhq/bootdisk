@@ -295,14 +295,25 @@ The roadmap follows these principles:
 
 ---
 
+## Latest format qualification — 17 October 2026
+
+The [ten-CD follow-up](batch-formats-2026-10-17.md) prepares nine additional CDs
+locally: 427 source posts and 370 RTFs. All 73 missing Norwegian title tasks are
+resolved automatically; nested Tools menus and multiline prose are supported.
+Twenty-eight lesson documents are preserved separately, not published as courses.
+4/2002 remains blocked on the unqualified Flytter section and Director codec.
+These results are not deployed. Qualify localized screenshots and the remaining
+source exception before claiming complete new-source coverage.
+
 ## Current focus
 
-1. **Qualify observed format exceptions, then consolidate intake.** Resolve the
-   2002 multiline text with preserved raw evidence and matching Catalog validation;
-   verify nested Tools paths and all original regression media. Determine the role
-   of Knuser.dtx before claiming complete coverage of 12/2001. Do not turn these
-   format investigations into per-program manual approvals. Also qualify the new
-   13/2001 workshop destination and 14/2001 external-cast boundary variants.
+1. **Qualify the remaining source and artwork variants.** The observed 2002
+   multiline Tools prose and nested Tools paths now pass qualification. Resolve
+   4/2002's Flytter section and unsupported Director resource codec; qualify localized
+   screenshot names such as ShotNO.png. Determine the role of Knuser.dtx before
+   claiming complete coverage of 12/2001, and qualify 13/2001's workshop destination
+   and 14/2001's external-cast boundary. Keep these as format investigations rather
+   than per-program manual approvals.
 
    **Repeatable intake: first coordinator delivered.** The [command](intake.md)
    resumes verified checkpoints and reports each CD separately. Real-media tests
