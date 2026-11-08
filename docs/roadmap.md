@@ -384,3 +384,15 @@ profile must not turn an unverified catalog identity into a confirmed one.
 Do not spend broadly on AI enrichment or old menu formats without a concrete
 need. Investigate actual intake exceptions and preserve unknowns. Broader sources,
 LetoLAN and contributor workflows remain in phases 5–7 above.
+
+## Prepared HTML intake — 8 November 2026
+
+[Four 2012 CDs](html-intake-acceptance-2026-11-08.md) add 212 source posts with
+212 source images locally. Together with the preceding three-CD batch the preview
+contains 1917 posts / 33 CDs. Live rc23 remains 1551 / 26; this is not published.
+The HTML source format is now qualified through the local pipeline, including
+article/video menu entries. Release follows component review and Claude's public
+frontend redesign. Preserve source-reported version/license separately from
+curated product identity when adding their public display. PDF/video playback,
+automatic archive-driver selection and complete-disc/runtime certification remain
+separate follow-ups.

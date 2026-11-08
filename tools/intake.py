@@ -93,12 +93,15 @@ def load_plan(config, workspace):
         mid = item.get('id', '')
         require(SLUG.fullmatch(mid) and mid not in seen, 'Invalid/duplicate medium id')
         seen.add(mid)
-        require(item.get('profile') in ('dtx', 'dtx-workshop'), 'Choose a qualified dtx or dtx-workshop profile')
+        require(item.get('profile') in ('dtx', 'dtx-workshop', 'html'), 'Choose a qualified dtx, dtx-workshop or html profile')
         require(isinstance(item.get('label'), str) and item['label'].strip(), 'Missing CD label')
         require(bool(item.get('source_root')) != bool(item.get('iso')), 'Choose source_root OR iso')
         m = dict(item)
         key = 'source_root' if item.get('source_root') else 'iso'
         m[key] = str(path(item[key]));inputs.append(Path(m[key]))
+        if item.get('image'):
+            require(bool(item.get('source_root')), 'image evidence requires source_root')
+            m['image'] = str(path(item['image']));inputs.append(Path(m['image']))
         normalized.append(m)
     baseline = path(plan['baseline']) if plan.get('baseline') else None
     if baseline:
@@ -244,11 +247,13 @@ class Pipeline:
             source = Path(m['source_root'])
         def observe(p):
             args = ['-m', 'bootdisk_ingest', source, '--output', p/'manifest.json', '--extract-to', p/'extraction']
-            if m.get('iso'):
-                args += ['--image', m['iso']]
+            if m.get('iso') or m.get('image'):
+                args += ['--image', m.get('iso') or m['image']]
             self.command(p, *args)
         obs = step('observe', observe);manifest = obs/'manifest.json';data = read(manifest)
         coverage = data.get('source', {}).get('coverage', {})
+        require((m['profile'] == 'html') == (data.get('schema_version') == 'kcd-html-1'),
+                'Observed source format differs from requested profile')
         require(not coverage.get('unprocessed_metadata') and
                 not any(x.get('unprojected_sections') for x in coverage.get('metadata_files', [])),
                 'Unprocessed source metadata; see observed manifest coverage')
