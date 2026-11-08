@@ -149,3 +149,22 @@ class InputTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+class HtmlInputTests(unittest.TestCase):
+    def test_html_source_and_original_image_are_both_pinned(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'source';source.mkdir();(source/'menu').write_bytes(b'menu')
+            image=root/'original.iso';image.write_bytes(b'original')
+            repos={name:str(root/name) for name in ('ingest','catalog','publish','web')}
+            for p in repos.values():Path(p).mkdir()
+            config=root/'config.json'
+            i.write(config,{'schema':i.SCHEMA,'repositories':repos,'media':[{'id':'kcd-5-2012','label':'K-CD 5/2012','profile':'html','source_root':str(source),'image':str(image)}]})
+            with patch.object(i,'pin_repo',return_value={'head':'fixture','files':{}}):
+                before=i.load_plan(config,root/'run');image.write_bytes(b'changed');after=i.load_plan(config,root/'run')
+            self.assertEqual(before['media'][0]['image'],str(image));self.assertNotEqual(before['fingerprints'],after['fingerprints'])
+
+    def test_unknown_profile_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);config=root/'config.json'
+            i.write(config,{'schema':i.SCHEMA,'repositories':{k:tmp for k in ('ingest','catalog','publish','web')},'media':[{'id':'new','label':'New','profile':'unknown','source_root':tmp}]})
+            with self.assertRaises(i.IntakeError):i.load_plan(config,root/'run')
