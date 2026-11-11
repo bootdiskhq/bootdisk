@@ -103,6 +103,7 @@ def load_plan(config, workspace):
         if item.get('image'):
             require(bool(item.get('source_root')), 'image evidence requires source_root')
             m['image'] = str(path(item['image']));inputs.append(Path(m['image']))
+        require(type(m.get('catalog_images_only', False)) is bool, 'catalog_images_only must be boolean')
         require(m.get('archive_driver', 'seven_zip') in ('seven_zip', 'bsdtar'), 'Unknown archive driver')
         require('archive_driver' not in m or key == 'iso', 'archive_driver requires iso')
         normalized.append(m)
@@ -280,6 +281,8 @@ class Pipeline:
             source = Path(m['source_root'])
         def observe(p):
             args = ['-m', 'bootdisk_ingest', source, '--output', p/'manifest.json', '--extract-to', p/'extraction']
+            if m.get('catalog_images_only'):
+                args += ['--extract-images-only']
             if m.get('iso') or m.get('image'):
                 args += ['--image', m.get('iso') or m['image']]
             self.command(p, *args)
