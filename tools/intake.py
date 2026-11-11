@@ -11,6 +11,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 
 SCHEMA = 'bootdisk-intake-run-1'
 SLUG = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*\Z')
@@ -102,6 +103,9 @@ def load_plan(config, workspace):
         if item.get('image'):
             require(bool(item.get('source_root')), 'image evidence requires source_root')
             m['image'] = str(path(item['image']));inputs.append(Path(m['image']))
+        require(type(m.get('catalog_images_only', False)) is bool, 'catalog_images_only must be boolean')
+        require(m.get('archive_driver', 'seven_zip') in ('seven_zip', 'bsdtar'), 'Unknown archive driver')
+        require('archive_driver' not in m or key == 'iso', 'archive_driver requires iso')
         normalized.append(m)
     baseline = path(plan['baseline']) if plan.get('baseline') else None
     if baseline:
@@ -110,7 +114,11 @@ def load_plan(config, workspace):
     if collections:
         inputs.append(collections)
     seven = path(plan['seven_zip']) if plan.get('seven_zip') else None
-    require(seven or all('source_root' in m for m in normalized), 'ISO input requires an explicit seven_zip executable')
+    require(seven or all('source_root' in m or m.get('archive_driver') == 'bsdtar' for m in normalized), 'ISO input requires an explicit seven_zip executable')
+    bsdtar = path(plan['bsdtar']) if plan.get('bsdtar') else None
+    require(bsdtar or all(m.get('archive_driver') != 'bsdtar' for m in normalized), 'bsdtar driver requires an explicit executable')
+    if bsdtar:
+        inputs.append(bsdtar)
     if seven:
         inputs.append(seven)
     for p in inputs:
@@ -122,6 +130,7 @@ def load_plan(config, workspace):
     return {'config': plan, 'repositories': {k: str(v) for k, v in repos.items()},
             'media': normalized, 'baseline': str(baseline) if baseline else None,
             'seven_zip': str(seven) if seven else None,
+            'bsdtar': str(bsdtar) if bsdtar else None,
             'collections': str(collections) if collections else None, 'fingerprints': fingerprints}
 
 
@@ -237,16 +246,43 @@ class Pipeline:
                 subprocess.run(command, env=self.env, check=True, stdout=log, stderr=log)
 
     def disc(self, m):
+        if m.get('archive_driver') == 'bsdtar':
+            # Only the disposable source is temporary. Observations, logs and
+            # committed results remain under the normal stage receipts.
+            with tempfile.TemporaryDirectory(prefix='.source-', dir=self.run.root) as temporary:
+                source = Path(temporary) / 'files'
+                source.mkdir()
+                archive = Path(m['iso'])
+                tool = self.run.plan['bsdtar']
+                listing = subprocess.check_output([tool, '-tf', str(archive)], env=self.env).decode('utf-8', 'strict')
+                for name in listing.splitlines():
+                    path = Path(name)
+                    require(not path.is_absolute() and '..' not in path.parts and '\\' not in name,
+                            'Unsafe archive member: ' + name)
+                types = subprocess.check_output([tool, '-tvf', str(archive)], env=self.env).decode('utf-8', 'strict')
+                require(all(line[:1] in ('-', 'd') for line in types.splitlines()),
+                        'Archive contains links or unsupported file types')
+                require(shutil.disk_usage(self.run.root).free > archive.stat().st_size + 512 * 1024 * 1024,
+                        'Insufficient disk space for temporary source and results')
+                subprocess.run([tool, '-xf', str(archive), '-C', str(source)], env=self.env, check=True)
+                return self.disc_source(m, source)
+        return self.disc_source(m)
+
+    def disc_source(self, m, prepared_source=None):
         prefix = m['id']
         def step(name, fn):
             return self.run.stage(prefix + '-' + name, fn)
-        if m.get('iso'):
+        if prepared_source is not None:
+            source = prepared_source
+        elif m.get('iso'):
             source = step('source', lambda p: self.command(p, 'x', '-y', '-o' + str(p / 'files'), m['iso'],
                                                          executable=self.run.plan['seven_zip'])) / 'files'
         else:
             source = Path(m['source_root'])
         def observe(p):
             args = ['-m', 'bootdisk_ingest', source, '--output', p/'manifest.json', '--extract-to', p/'extraction']
+            if m.get('catalog_images_only'):
+                args += ['--extract-images-only']
             if m.get('iso') or m.get('image'):
                 args += ['--image', m.get('iso') or m['image']]
             self.command(p, *args)

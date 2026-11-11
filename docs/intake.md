@@ -61,3 +61,27 @@ CI runs these synthetic safety tests without private CDs. Real-media acceptance 
 recorded separately in [the acceptance report](intake-acceptance-2026-10-17.md).
 `--stop-after kcd-7-2001-observe` deliberately stops after a committed checkpoint;
 repeat without that option to test resumption.
+
+## Serial ISO input with a disposable source
+
+For ISO9660 images that 7-Zip misdetects as an embedded archive, set an explicit
+`"bsdtar": "/usr/bin/tar"` at the top level and `"archive_driver": "bsdtar"`
+on each ISO member. Use the same qualified `html`, `dtx` or `dtx-workshop` profile
+as for an extracted source. Driver selection is explicit, not guessed from year.
+
+The driver checks member paths and rejects links/special files before extraction.
+One source directory at a time is unpacked under the owned workspace, then removed
+on success, normal failure or interruption. Original images are read only. Stage
+outputs, observations and command logs remain. Source extraction itself is repeated
+on resume; existing committed processing stages are still checksum-verified and
+reused. A hard process kill may leave a `.source-*` temporary directory; these are
+not silently deleted on restart. A new workspace is required if code or inputs change.
+
+The original image and archive executable are pinned alongside the component
+checkouts. A free-space check reserves the image size plus 512 MiB before extraction;
+this is a minimum guard, not a guarantee for arbitrary compressed archives. This
+mode is intended for ISO images. A failed disc continues to the next one and blocks
+combined publication, just as other profiles do. Inspect report.json/report.md.
+
+No source readiness result means verified product identity. No automatic upload is
+introduced. Keep specialist/unknown discs in a separate explicitly configured run.
