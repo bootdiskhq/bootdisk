@@ -161,7 +161,7 @@ class HtmlInputTests(unittest.TestCase):
             i.write(config,{'schema':i.SCHEMA,'repositories':repos,'media':[{'id':'kcd-5-2012','label':'K-CD 5/2012','profile':'html','source_root':str(source),'image':str(image)}]})
             with patch.object(i,'pin_repo',return_value={'head':'fixture','files':{}}):
                 before=i.load_plan(config,root/'run');image.write_bytes(b'changed');after=i.load_plan(config,root/'run')
-            self.assertEqual(before['media'][0]['image'],str(image));self.assertNotEqual(before['fingerprints'],after['fingerprints'])
+            self.assertEqual(before['media'][0]['image'],str(image.resolve()));self.assertNotEqual(before['fingerprints'],after['fingerprints'])
 
     def test_unknown_profile_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
