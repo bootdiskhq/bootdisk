@@ -311,6 +311,7 @@ class Pipeline:
             self.command(p,'-m','bootdisk_catalog.source_documents',manifest,p/'observations.json',output=p/'documents.json')
             self.command(p,'-m','bootdisk_publish.documents',p/'documents.json','--output',p/'published','--manifest-output',p/'published.json')
             self.command(p,self.web/'attach-source-documents.py',main/'data',p/'published.json','--output',p/'data')
+            self.command(p,self.web/'source_pdfs.py',p/'data',source,p/'published/store')
         docs = step('documents', documents)
         tools = None
         if m['profile'] == 'dtx-workshop':
